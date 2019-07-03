@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Fresca&display=swap');
+
+body,
+button {
+  font-family: 'Fresca', sans-serif;
+}
+
+button {
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.App {
+  text-align: center;
+}
+
+.Homepage-logo {
+  height: 35vmin;
+  pointer-events: none;
+}
+
+.Homepage {
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #000;
+}
+
+.Homepage .container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-top: 2%;
+}
+
+.Homepage .container .left img {
+  width: 100%;
+  max-width: 550px;
+}
+
+.Homepage .container .right p {
+  width: 100%;
+  max-width: 200px;
+  padding-left: 50px;
+  text-align: left;
+}
+
+.Homepage .container .right button {
+  padding: 20px 35px;
+  background: #5cf761;
+  font-size: 4rem;
+  color: #fff;
+  text-transform: uppercase;
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+.Homepage .container .right button:hover {
+  box-shadow: 0 0 10px rgba(117, 147, 243, 1);
+}
+
+.AddActivity {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.AddActivity textarea {
+  margin-bottom: 30px;
+}
+
+.AddActivity input,
+.AddActivity textarea,
+.AddActivity button,
+.AddActivity h2 {
+  display: block;
+}
+
+.AddActivity button {
+  padding: 20px;
+  font-size: 1.5rem;
+  background-color: #7593f3;
+  color: #fff;
+}
+
+.AddActivity button:hover {
+  box-shadow: 0 0 10px rgb(247, 92, 171);
+}
