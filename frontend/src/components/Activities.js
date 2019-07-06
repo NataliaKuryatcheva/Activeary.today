@@ -1,28 +1,30 @@
-// import React from 'react'
+import { useState } from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
 const purpleHover = 'rgba(117, 147, 243, 0.43)'
-const purple = 'rgb(117, 147, 243)'
-const green = '#5cf761'
+// const purple = 'rgb(117, 147, 243)'
+// const green = '#5cf761'
 const pink = 'rgb(247, 92, 171)'
 
-const showActivities = () => {}
-
 const Activities = ({ activities }) => {
+  const [showActivities, setShowActivities] = useState(false)
+
   return (
     <div
       className='Activities'
       css={css`
         display: grid;
         grid-template-areas: 'sidebar-desktop main';
-        grid-template-columns: 300px auto;
+        grid-template-columns: 300px 100%;
         width: 100vw;
         height: 100vh;
 
         @media (max-width: 800px) {
-          grid-template-columns: 80px auto;
-          grid-template-areas: 'sidebar-mobile main';
+          grid-template-columns: 80px 100%;
+          grid-template-areas: "sidebar-mobile ${
+            showActivities ? 'sidebar-desktop' : 'main'
+          }";
         }
       `}>
       <ul
@@ -35,11 +37,7 @@ const Activities = ({ activities }) => {
           list-style-type: none;
 
           @media (max-width: 800px) {
-            display: none;
-
-            &.show {
-              display: block;
-            }
+            display: ${showActivities ? 'block' : 'none'};
           }
         `}>
         {activities.map((activity, index) => {
@@ -79,7 +77,9 @@ const Activities = ({ activities }) => {
             display: block;
             padding: 20px 0px 0px 20px;
           `}
-          onClick={showActivities}>
+          onClick={() => {
+            setShowActivities(!showActivities)
+          }}>
           <span
             css={css`
               display: block;
@@ -123,6 +123,7 @@ const Activities = ({ activities }) => {
         className='Detail'
         css={css`
           grid-area: main;
+          display: ${showActivities ? 'none' : 'block'};
         `}
       />
     </div>
