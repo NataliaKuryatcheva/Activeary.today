@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { css, jsx } from '@emotion/core'
 import Detail from './Activities/Detail'
 import SidebarMobile from './Activities/SidebarMobile'
-import SidebarDesktop from './Activities/SidebarDesktop'
+import ActivitiesList from './Activities/ActivitiesList'
 
 // const purpleHover = 'rgba(117, 147, 243, 0.43)'
 // const purple = 'rgb(117, 147, 243)'
@@ -31,9 +31,10 @@ const Activities = ({ activities }) => {
           }";
         }
       `}>
-      <SidebarDesktop
+      <ActivitiesList
         activities={activities}
         showActivities={showActivities}
+        setShowActivities={setShowActivities}
         setCurrentActivity={setCurrentActivity}
       />
 
