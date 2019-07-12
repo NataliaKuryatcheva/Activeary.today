@@ -2,8 +2,9 @@
 import { css, jsx } from '@emotion/core'
 
 const purpleHover = 'rgba(117, 147, 243, 0.43)'
+const pinkHover = 'rgba(247, 92, 171, 0.80)'
 // const purple = 'rgb(117, 147, 243)'
-// const green = '#5cf761'
+const green = '#5cf761'
 // const pink = 'rgb(247, 92, 171)'
 
 const ActivitiesList = ({
@@ -57,9 +58,23 @@ const ActivitiesList = ({
 
       <div
         css={css`
-          border: 1px ${purpleHover} solid;
+          text-align: center;
+          border-top: 1px ${green} solid;
+          padding-top: 5px;
+
+          &:hover {
+            box-shadow: 0 0 10px ${pinkHover};
+          }
         `}>
         <button
+          css={css`
+            font-size: 2.6rem;
+            padding: 0 3rem 0 3rem;
+            border: none;
+            background-color: transparent;
+            color: ${green};
+            outline: none;
+          `}
           onClick={() => {
             alert('HEY!')
           }}>
