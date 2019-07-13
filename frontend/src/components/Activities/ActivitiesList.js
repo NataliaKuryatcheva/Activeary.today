@@ -11,7 +11,8 @@ const ActivitiesList = ({
   activities,
   showActivities,
   setShowActivities,
-  setCurrentActivity
+  setCurrentActivity,
+  setScreen
 }) => {
   return (
     <div
@@ -76,7 +77,7 @@ const ActivitiesList = ({
             outline: none;
           `}
           onClick={() => {
-            alert('HEY!')
+            setScreen('addActivity')
           }}>
           <span>✚</span>
         </button>

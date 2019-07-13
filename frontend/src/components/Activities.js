@@ -10,7 +10,7 @@ import ActivitiesList from './Activities/ActivitiesList'
 // const green = '#5cf761'
 // const pink = 'rgb(247, 92, 171)'
 
-const Activities = ({ activities }) => {
+const Activities = ({ setScreen, activities }) => {
   const [showActivities, setShowActivities] = useState(false)
   const [currentActivity, setCurrentActivity] = useState({})
 
@@ -36,6 +36,7 @@ const Activities = ({ activities }) => {
         showActivities={showActivities}
         setShowActivities={setShowActivities}
         setCurrentActivity={setCurrentActivity}
+        setScreen={setScreen}
       />
 
       <SidebarMobile

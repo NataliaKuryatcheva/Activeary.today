@@ -40,7 +40,7 @@ const storeActivity = async activity => {
 }
 
 const App = () => {
-  const [screen, setScreen] = useState('activities')
+  const [screen, setScreen] = useState('addActivity')
   const [activities, setActivities] = useState([])
 
   useEffect(() => {
@@ -54,9 +54,11 @@ const App = () => {
     <div className='App'>
       {screen === 'homepage' && <Homepage setScreen={setScreen} />}
       {screen === 'addActivity' && (
-        <AddActivity storeActivity={storeActivity} />
+        <AddActivity storeActivity={storeActivity} setScreen={setScreen} />
       )}
-      {screen === 'activities' && <Activities activities={activities} />}
+      {screen === 'activities' && (
+        <Activities setScreen={setScreen} activities={activities} />
+      )}
     </div>
   )
 }
