@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import MapPicker from './MapPicker'
+import MapPicker from './AddActivity/MapPicker'
 
 const AddActivity = ({ storeActivity, setScreen }) => {
   const [title, setTitle] = useState('')
+  const [location, setLocation] = useState({}) // longitude, latitude
   const [description, setDescription] = useState('')
 
   const addActivity = () => {
@@ -15,7 +16,7 @@ const AddActivity = ({ storeActivity, setScreen }) => {
       <h2>Activity title</h2>
       <input onChange={event => setTitle(event.target.value)} />
 
-      <MapPicker />
+      <MapPicker location={location} setLocation={setLocation} />
 
       <h2>Activity description</h2>
       <textarea
