@@ -4,54 +4,45 @@ import { css, jsx } from '@emotion/core'
 import L from 'leaflet'
 import '../../leaflet/leaflet.css'
 
-const initializeMap = () => {
-  var mymap = L.map('mapid').setView([51.505, -0.09], 13)
+let mapInstance = null
 
-  L.tileLayer(
-    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-    {
-      maxZoom: 18,
-      id: 'mapbox.streets'
-    }
-  ).addTo(mymap)
+const initializeMap = (location, setLocation) => {
+  const osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    osmAttr = '&copy Activeary.today',
+    osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttr })
 
-  // L.marker([51.5, -0.09])
-  //   .addTo(mymap)
-  //   .bindPopup('<b>Hello world!</b><br />I am a popup.')
-  //   .openPopup()
+  mapInstance = L.map('mapid')
+    .setView([location.lat || 43.175663, location.lng || 27.885991], 16)
+    .addLayer(osm)
 
-  L.circle([43.175663, 27.885991], 100, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5
-  })
-    .addTo(mymap)
-    .bindPopup('I am a circle.')
+  L.marker([location.lat || 43.175663, location.lng || 27.885991])
+    .addTo(mapInstance)
+    .bindPopup('Activity location')
+    .openPopup()
 
-  // L.polygon([[51.509, -0.08], [51.503, -0.06], [51.51, -0.047]])
-  //   .addTo(mymap)
-  //   .bindPopup('I am a polygon.')
+  mapInstance.on('click', event => {
+    setLocation({
+      lat: event.latlng.lat,
+      lng: event.latlng.lng
+    })
 
-  var popup = L.popup()
-
-  function onMapClick(e) {
+    const popup = L.popup()
     popup
-      .setLatLng(e.latlng)
-      .setContent('You clicked the map at ' + e.latlng.toString())
-      .openOn(mymap)
-  }
-
-  mymap.on('click', onMapClick)
+      .setLatLng(event.latlng)
+      .setContent('Activity location: ' + event.latlng.toString())
+      .openOn(mapInstance)
+  })
 }
 
 const MapPicker = ({ location, setLocation }) => {
   useEffect(() => {
-    initializeMap()
+    initializeMap(location, setLocation)
 
     return () => {
-      alert('componentWillUnmount')
+      mapInstance.off()
+      mapInstance.remove()
     }
-  }, [])
+  }, [location, setLocation])
 
   return (
     <div className='MapPicker'>
@@ -59,7 +50,7 @@ const MapPicker = ({ location, setLocation }) => {
       <div
         id='mapid'
         css={css`
-          width: 600px;
+          width: 300px;
           height: 400px;
         `}
       />

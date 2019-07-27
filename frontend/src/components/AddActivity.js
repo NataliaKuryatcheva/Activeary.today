@@ -7,7 +7,7 @@ const AddActivity = ({ storeActivity, setScreen }) => {
   const [description, setDescription] = useState('')
 
   const addActivity = () => {
-    storeActivity({ title, description })
+    storeActivity({ title, location, description })
     setScreen('activities')
   }
 
