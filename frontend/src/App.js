@@ -40,7 +40,7 @@ const storeActivity = async activity => {
 }
 
 const App = () => {
-  const [screen, setScreen] = useState('addActivity')
+  const [screen, setScreen] = useState('activities')
   const [activities, setActivities] = useState([])
 
   useEffect(() => {

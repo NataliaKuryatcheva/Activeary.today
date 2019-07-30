@@ -1,0 +1,19 @@
+{
+  "name": "activearytodaybot",
+  "version": "1.0.0",
+  "description": "Bot for Activeary.today application",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natalia Kuryatcheva",
+  "license": "ISC",
+  "dependencies": {
+    "custom-env": "^1.0.2",
+    "telegraf": "^3.32.0"
+  },
+  "engines": {
+    "node": "8.x"
+  }
+}
